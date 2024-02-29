@@ -74,7 +74,7 @@ A database management system for managing a political organization and track dow
 - ContactDetails (Single Value)
 - AssignedCampaignID (Foreign Key, Multi-valued)
 
-]
+
 ## Fundraiser
 
 ### Attributes:
