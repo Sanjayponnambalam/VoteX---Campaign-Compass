@@ -4,7 +4,7 @@ A database management system for managing a political organization and track dow
 
 # Setting up
 
-- Project done with Amazon Web Service Relational Database service (RDS).
+- Project done with Amazon Web Service Relational Database service (RDS) for cloud server.
 
 # IDE Used
 
@@ -103,3 +103,8 @@ A database management system for managing a political organization and track dow
 - Leader (Single Value)
 - Ideology (Single Value)
 
+# Notes
+
+- key Constraints : primary key, foreign key.
+- Types of Attributes included : Composite, Multi - Valued, Derived.
+- Inbound rules were changed for Oracle engine in the RDS.
