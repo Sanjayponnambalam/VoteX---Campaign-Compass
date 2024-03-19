@@ -1,3 +1,4 @@
+-- Candidate table
 CREATE TABLE Candidate (
     CandidateID NUMBER PRIMARY KEY,
     Name VARCHAR2(255),
@@ -100,4 +101,17 @@ CREATE TABLE Fundraiser (
     FundsRaised NUMBER,
     FundraiserDate DATE,
     CONSTRAINT fk_fundraiser_campaign FOREIGN KEY (CampaignID) REFERENCES Campaign(CampaignID)
+);
+
+-- Polling Station table
+CREATE TABLE PollingStation (
+    PollingStationID NUMBER PRIMARY KEY,
+    Name VARCHAR2(255),
+    Location VARCHAR2(255),
+    OpeningTime TIMESTAMP,
+    ClosingTime TIMESTAMP,
+    ContactNumber VARCHAR2(20),
+    ConstituencyID NUMBER,
+    CONSTRAINT fk_constituency FOREIGN KEY (ConstituencyID) REFERENCES Constituency(ConstituencyID),
+    CONSTRAINT chk_opening_closing_time CHECK (ClosingTime > OpeningTime)
 );
