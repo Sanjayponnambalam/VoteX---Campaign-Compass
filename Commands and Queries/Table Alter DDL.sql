@@ -23,14 +23,6 @@ ALTER TABLE Donor
 ADD CONSTRAINT chk_donation_amount CHECK (DonationAmount >= 0);
 
 
--- on 20/03/24
--- Add ContactDetails column to PoliticalParty table
-ALTER TABLE PoliticalParty ADD ContactDetails VARCHAR2(100);
-
--- Rename ContactNumber column to ContactDetails in PollingStation table
-ALTER TABLE PollingStation RENAME COLUMN ContactNumber TO ContactDetails;
-
-
 -- Fundraiser table
 ALTER TABLE Fundraiser
 ADD CONSTRAINT chk_fundraiser_funds_raised CHECK (FundsRaised >= 0);
@@ -44,3 +36,11 @@ ADD CONSTRAINT chk_event_location_not_empty CHECK (Location IS NOT NULL AND Loca
 -- Campaign Table
 ALTER TABLE Campaign
 ADD CONSTRAINT chk_end_date_after_start_date CHECK (EndDate > StartDate);
+
+
+-- on 20/03/24
+-- Add ContactDetails column to PoliticalParty table
+ALTER TABLE PoliticalParty ADD ContactDetails VARCHAR2(100);
+
+-- Rename ContactNumber column to ContactDetails in PollingStation table
+ALTER TABLE PollingStation RENAME COLUMN ContactNumber TO ContactDetails;
