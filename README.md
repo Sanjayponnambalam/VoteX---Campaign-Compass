@@ -45,7 +45,6 @@ A database management system for managing a political organization and track dow
 - EndDate (Single Value)
 - Budget (Single Value)
 - Description (Single Value)
-- DerivedAttribute: CampaignDuration (Derived from StartDate and EndDate)
 
 
 ## Constituency
@@ -72,7 +71,6 @@ A database management system for managing a political organization and track dow
 - VolunteerID (Primary Key)
 - Name (Single Value)
 - ContactDetails (Single Value)
-- AssignedCampaignID (Foreign Key, Multi-valued)
 
 
 ## Fundraiser
@@ -91,7 +89,7 @@ A database management system for managing a political organization and track dow
 ### Attributes:
 - EventID (Primary Key)
 - Name (Single Value)
-- Date (Single Value)
+- EventDate (Single Value)
 - Location (Single Value)
 - CampaignID (Foreign Key)
 
@@ -102,16 +100,18 @@ A database management system for managing a political organization and track dow
 - Name (Single Value)
 - Leader (Single Value)
 - Ideology (Single Value)
+- ContactDetails
 
 ## PollingStation
 
 ### Attributes
 
+- PollingStationID
 - Name
 - Location
 - OpeningTime
 - ClosingTime
-- ContactNumber
+- ContactDetails
 - ConstituencyID
 
 # Notes
