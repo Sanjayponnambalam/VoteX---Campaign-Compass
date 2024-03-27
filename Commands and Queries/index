@@ -1,4 +1,4 @@
---- Contains all the queries for the database for eaxh operation performed. ---
+--- Contains all the queries for the database for each operation performed. ---
 
 1. Campaign Compass
 2. Table Alter DDL
