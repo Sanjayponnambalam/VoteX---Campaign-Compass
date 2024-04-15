@@ -22,6 +22,33 @@ ADD CONSTRAINT chk_party_name_length CHECK (LENGTH(Name) <= 100);
 ALTER TABLE Donor
 ADD CONSTRAINT chk_donation_amount CHECK (DonationAmount >= 0);
 
+-- volunteer name change
+UPDATE volunteer
+SET Name = 
+    CASE 
+        WHEN Name = 'Amit Kumar' THEN 'Adam'
+        WHEN Name = 'Rahul Singh' THEN 'Ram Kumar'
+        WHEN Name = 'Suresh Sharma' THEN 'suran'
+        WHEN Name = 'Rajesh Reddy' THEN 'Rahim'
+        WHEN Name = 'Praveen Joshi' THEN 'Deepak'
+        WHEN Name = 'Meera Gupta' THEN 'Manish'
+        ELSE Name
+    END;
+
+
+-- Candidate name change
+
+UPDATE candidate
+SET Name = 
+    CASE 
+        WHEN Name = 'Neha Sharma' THEN 'Aman Sharma'
+        WHEN Name = 'Meera Gupta' THEN 'Meeran'
+        WHEN Name = 'Praveen Joshi' THEN 'Adithya'
+        WHEN Name = 'Anjali Das' THEN 'Arjun'
+        ELSE Name
+    END;
+
+
 
 -- Fundraiser table
 ALTER TABLE Fundraiser
