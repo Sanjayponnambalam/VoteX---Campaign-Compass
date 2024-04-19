@@ -22,6 +22,8 @@ ADD CONSTRAINT chk_party_name_length CHECK (LENGTH(Name) <= 100);
 ALTER TABLE Donor
 ADD CONSTRAINT chk_donation_amount CHECK (DonationAmount >= 0);
 
+
+
 -- volunteer name change
 UPDATE volunteer
 SET Name = 
@@ -71,3 +73,52 @@ ALTER TABLE PoliticalParty ADD ContactDetails VARCHAR2(100);
 
 -- Rename ContactNumber column to ContactDetails in PollingStation table
 ALTER TABLE PollingStation RENAME COLUMN ContactNumber TO ContactDetails;
+
+
+-- FROM normalization
+
+ALTER TABLE Campaign
+ADD TargetAudience VARCHAR(50);
+
+
+-- Step 1: Add the new column to the Campaign table
+ALTER TABLE Campaign
+ADD TargetAudience VARCHAR(50);
+
+-- Step 2: Update the newly added column with the provided values
+UPDATE Campaign
+SET TargetAudience = 'Youth, Elderly'
+WHERE CampaignID = 1;
+
+UPDATE Campaign
+SET TargetAudience = 'General Public'
+WHERE CampaignID IN (2, 4, 5, 7, 8, 9, 10);
+
+UPDATE Campaign
+SET TargetAudience = 'Donors'
+WHERE CampaignID = 6;
+
+-- Step 3: Add the new columns to the Campaign table
+ALTER TABLE Campaign
+ADD CampaignName VARCHAR(255),
+ADD TargetAudience VARCHAR(255);
+
+-- Step 4: Update the newly added columns with the provided values
+UPDATE Campaign
+SET CampaignName = CASE 
+                        WHEN CampaignID = 1 THEN 'Political Rally'
+                        WHEN CampaignID = 2 THEN 'Community Outreach'
+                        WHEN CampaignID = 3 THEN 'Digital Media Campaign'
+                        WHEN CampaignID = 4 THEN 'Door-to-Door Canvassing'
+                        WHEN CampaignID = 5 THEN 'Town Hall Meetings'
+                        WHEN CampaignID = 6 THEN 'Fundraising Events'
+                        WHEN CampaignID = 7 THEN 'Volunteer Recruitment'
+                        WHEN CampaignID = 8 THEN 'Media Advertising'
+                        WHEN CampaignID = 9 THEN 'Policy Speeches'
+                        WHEN CampaignID = 10 THEN 'Voter Turnout Push'
+                    END,
+    TargetAudience = CASE 
+                        WHEN CampaignID IN (1, 3) THEN 'Youth, Elderly'
+                        WHEN CampaignID IN (2, 4, 5, 7, 8, 9, 10) THEN 'General Public'
+                        WHEN CampaignID = 6 THEN 'Donors'
+                    END;
