@@ -1,3 +1,5 @@
+-- See Project review - 4 report for vivid understanding of the code. Performed only for Campaign table.
+-- 2 NF
 -- Step 1: Create the Campaign table
 CREATE TABLE CampaignDetails (
     CampaignID INT PRIMARY KEY,
@@ -20,6 +22,7 @@ VALUES
     (10, 'Voter Turnout Push', 'General Public');
 
 
+-- 3NF
 -- Second table
 -- Create the campaigndates table
 CREATE TABLE campaigndates (
@@ -40,3 +43,32 @@ VALUES
     ('2024-10-20', '2024-12-20'),
     ('2024-11-05', '2025-01-05'),
     ('2024-12-10', '2025-02-10');
+
+-- BCNF - already satisfied with superkey CampaignID
+
+-- 4NF 
+
+-- Create the CampaignStart table
+CREATE TABLE CampaignStart (
+    CampaignID INT,
+    StartDate DATE
+);
+
+-- Insert values into the CampaignStart table
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (1, '2024-03-01');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (2, '2024-04-15');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (3, '2024-05-10');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (4, '2024-06-20');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (5, '2024-07-25');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (6, '2024-08-30');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (7, '2024-09-15');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (8, '2024-10-20');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (9, '2024-11-05');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (10, '2024-12-10');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (1, '2024-03-15');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (1, '2024-03-20');
+INSERT INTO CampaignStart (CampaignID, StartDate) VALUES (2, '2024-04-22');
+
+
+-- 5NF - just split the resultant table of 4NF such that it can be retained back to original form using natural join (Joint Dependency).
+
