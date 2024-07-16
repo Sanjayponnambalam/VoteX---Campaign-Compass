@@ -12,7 +12,6 @@ A database management system for managing a political organization and track dow
 
 # Database Tables
 
-
 ## Candidate
 
 ### Attributes : 
