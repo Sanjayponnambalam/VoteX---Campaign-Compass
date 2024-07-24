@@ -4,11 +4,11 @@ A database management system for managing a political organization and track dow
 
 # Setting up
 
-- Project done with Amazon Web Service Relational Database service (RDS) for cloud server.
+- Project done with Oracle Database Express Edition (Relational Database) for cloud server and Oracle SQL Developer for configuring Schema.
 
-# IDE Used
+# Software Used
 
-- Oracle SQL Developer and connected with RDS through endpoint connection.
+- Oracle SQL Developer and connected with Oracle RDS through pluggable connection.
 
 # Database Tables
 
